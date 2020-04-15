@@ -1,7 +1,13 @@
 .products-container {
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
+  //   text-align: center;
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //margin: 50px auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 30px;
+  justify-items: center;
 
   .product-card {
     width: 300px;
@@ -9,6 +15,8 @@
     margin: 30px;
     padding: 0 0 15px;
     border: 1px solid #dddddd;
+    display: inline-block;
+    text-align: center;
   }
 
   img {
@@ -38,5 +46,10 @@
     padding: 5px;
     margin: 15px auto;
     border: 1px solid transparent;
+  }
+
+  .buy-button:hover {
+    background: #2c7de7;
+    cursor: pointer;
   }
 }

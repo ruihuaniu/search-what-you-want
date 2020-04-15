@@ -6,7 +6,8 @@ function SearchBar() {
     const [inputValue, setInputValue] = useState()
 
     const handleSubmit = (e) => {
-        // alert(`You want to search ${inputValue}, right?`)
+        //alert(`You want to search ${inputValue}, right?`)
+        console.log(inputValue);
         e.preventDefault();
     }
 
@@ -22,7 +23,7 @@ function SearchBar() {
                 <input type="text" onChange={handleChange} />
                 <button>Search</button>
             </form>
-
+            {/* <div dangerouslySetInnerHTML={{ __html: inputValue }}></div> */}
         </div>
     )
 }
