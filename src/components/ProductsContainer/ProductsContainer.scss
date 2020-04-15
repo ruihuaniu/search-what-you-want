@@ -1,0 +1,42 @@
+.products-container {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  .product-card {
+    width: 300px;
+    min-height: 250px;
+    margin: 30px;
+    padding: 0 0 15px;
+    border: 1px solid #dddddd;
+  }
+
+  img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .product-title {
+    font-size: 16px;
+    padding-top: 10px;
+  }
+
+  .product-category {
+    padding: 10px;
+    color: #474747;
+  }
+
+  .product-unit {
+    color: #2c2c2c;
+  }
+
+  .buy-button {
+    width: 50%;
+    color: #ffffff;
+    background: #1467d4;
+    padding: 5px;
+    margin: 15px auto;
+    border: 1px solid transparent;
+  }
+}

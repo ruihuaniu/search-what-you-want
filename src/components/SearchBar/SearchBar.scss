@@ -1,0 +1,30 @@
+.searchBar-container {
+  text-align: center;
+  padding: 20px 0;
+
+  input[type="text"] {
+    color: #000000;
+    width: 40%;
+    padding: 10px 0;
+    border: 1px solid #cacaca;
+    border-radius: 20px 0 0 20px;
+  }
+
+  button {
+    color: #ffffff;
+    background: #1467d4;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 0 20px 20px 0;
+  }
+
+  button:hover {
+    background: #2c7de7;
+  }
+
+  @media only screen and (max-width: 756px) {
+    input[type="text"] {
+      width: 60%;
+    }
+  }
+}

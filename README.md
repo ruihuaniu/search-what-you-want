@@ -1,6 +1,6 @@
 ## Search what you want
 
-A React project with interesting search feature
+A React project with interesting search features
 
 [Live Demo]()
 
