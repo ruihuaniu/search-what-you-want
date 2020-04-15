@@ -1,14 +1,14 @@
 import React from 'react';
-import './App.css';
-import SearchBar from './components/SearchBar';
-import ProductsDisplay from './components/ProductsDisplay';
-import Footer from './components/Footer';
+import './App.scss';
+import SearchBar from './components/SearchBar/SearchBar';
+import ProductsContainer from './components/ProductsContainer/ProductsContainer';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="app-container">
       <SearchBar />
-      <ProductsDisplay />
+      <ProductsContainer />
       <Footer />
     </div>
   );

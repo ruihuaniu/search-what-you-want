@@ -1,0 +1,11 @@
+$fontSize: 14px;
+$fontColor: #f0f0f0;
+$backgroundColor: #312f2d;
+
+.footer-container {
+  text-align: center;
+  font-size: $fontSize;
+  color: $fontColor;
+  background-color: $backgroundColor;
+  padding: 50px;
+}
