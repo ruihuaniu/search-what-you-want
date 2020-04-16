@@ -1,6 +1,6 @@
 $fontSize: 14px;
 $fontColor: #f0f0f0;
-$backgroundColor: #312f2d;
+$backgroundColor: #232323;
 
 .footer-container {
   text-align: center;
@@ -9,4 +9,10 @@ $backgroundColor: #312f2d;
   background-color: $backgroundColor;
   padding: 50px;
   margin-top: auto;
+
+  img {
+    max-width: 36px;
+    max-height: 36px;
+    color: #000;
+  }
 }

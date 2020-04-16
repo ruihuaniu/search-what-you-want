@@ -29,7 +29,7 @@ function ProductsContainer() {
 
                 {products.map((item) => {
                     return (
-                        <LazyLoad key={item.catalog_number} height={200} offset={[-100, 0]}>
+                        <LazyLoad key={item.catalog_number} height={200} offset={[-100, 50]}>
                             <div className="product-card">
                                 <img src={item.image} alt="product iamge" />
                                 <div className="product-title">{item.name}</div>
