@@ -2,11 +2,10 @@
 
 A React project with interesting search features
 
-[Live Demo]()
+[Live Demo](https://search-what-you-want.now.sh/)
 
 ### Features
 
 - Search items by name (fuzzy search)
-- The details page of item can be visited.
-
-* No UI framework used
+- Lazy loading of items
+- Without any UI frameworks

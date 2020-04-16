@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import LazyLoad from 'react-lazyload'
 import './ProductsContainer.scss'
 import SearchBar from '../SearchBar/SearchBar'
 
@@ -14,27 +15,30 @@ function ProductsContainer() {
         { catalog_number: 5, name: "Product5-1", image: "/images/product.jpg", category: "category2", price: 49.99, unit: "AUD" },
         { catalog_number: 6, name: "Product5-2", image: "/images/product.jpg", category: "category3", price: 59.99, unit: "AUD" },
         { catalog_number: 7, name: "Product5-3", image: "/images/product.jpg", category: "category1", price: 9.99, unit: "AUD" },
-        { catalog_number: 8, name: "Product6-1", image: "/images/product.jpg", category: "category2", price: 19.99, unit: "AUD" },
-        { catalog_number: 9, name: "Product6-2", image: "/images/product.jpg", category: "category3", price: 29.99, unit: "AUD" },
-        { catalog_number: 10, name: "Product7", image: "/images/product.jpg", category: "category1", price: 39.99, unit: "AUD" }
+        { catalog_number: 8, name: "Product5-4", image: "/images/product.jpg", category: "category2", price: 19.99, unit: "AUD" },
+        { catalog_number: 9, name: "Product6-1", image: "/images/product.jpg", category: "category3", price: 29.99, unit: "AUD" },
+        { catalog_number: 10, name: "Product6-2", image: "/images/product.jpg", category: "category1", price: 39.99, unit: "AUD" }
     ]
 
     const [products, setProdcuts] = useState(data)
 
     return (
-        <div>
+        <div className="main-container">
             <SearchBar setProducts={setProdcuts} data={data} />
             <div className="products-container">
 
                 {products.map((item) => {
                     return (
-                        <div key={item.catalog_number} className="product-card">
-                            <img src={item.image} alt="product iamge" />
-                            <div className="product-title">{item.name}</div>
-                            <div className="product-category">{item.category}</div>
-                            <div className="product-price">{item.price}<span className="product-unit">{item.unit}</span></div>
-                            <div className="buy-button">Buy Now</div>
-                        </div>
+                        <LazyLoad key={item.catalog_number} height={200} offset={[-100, 0]}>
+                            <div className="product-card">
+                                <img src={item.image} alt="product iamge" />
+                                <div className="product-title">{item.name}</div>
+                                <div className="product-category">{item.category}</div>
+                                <div className="product-price">{item.price}<span className="product-unit">{item.unit}</span></div>
+                                <div className="buy-button">Buy Now</div>
+                            </div>
+                        </LazyLoad>
+
                     )
                 })}
 
