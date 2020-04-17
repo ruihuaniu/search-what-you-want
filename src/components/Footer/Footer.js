@@ -5,7 +5,7 @@ import './Footer.scss'
 function Footer() {
     return (
         <div className="footer-container">
-            <a href="https://github.com/BartonNIU/search-what-you-want" className="footer-icon"><img src="/images/github.png" />  </a>
+            <a href="https://github.com/BartonNIU/search-what-you-want" className="footer-icon"><img src="/images/github.png" alt="github icon" />  </a>
             <p>Copyright@ 2020 Barton All Rights Reserved</p>
         </div>
     )
