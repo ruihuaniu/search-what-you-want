@@ -1,13 +1,20 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import './ProductDetail.scss'
 
 function ProductDetail() {
-    //let { productName } = useParams();
+    let { title } = useParams();
 
     return (
-        <div>
-            {/* <h1>{productName}</h1> */}
-            <h2>Product details page</h2>
+        <div className="product-detail-container">
+            <div className="product-left-container">
+                <img src="/images/product.jpg" alt="product" />
+            </div>
+            <div className="product-right-container">
+                <h1>{title}</h1>
+                <h2>Product details page</h2>
+            </div>
+
         </div>
     )
 }

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProductDetail from './components/ProductsContainer/ProductDetail/ProductDetail'
 import ProductsContainer from './components/ProductsContainer/ProductsContainer'
 
@@ -12,7 +12,7 @@ function MainRouter() {
             <div>
                 <Switch>
                     <Route path="/" exact component={ProductsContainer} />
-                    <Route path="/item" component={ProductDetail} />>
+                    <Route path="/:title" children={<ProductDetail />} />>
                  </Switch>
             </div>
         </Router>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import LazyLoad from 'react-lazyload'
 import './ProductsContainer.scss'
 import SearchBar from '../SearchBar/SearchBar'
@@ -32,16 +32,17 @@ function ProductsContainer() {
 
                 {products.map((item) => {
                     return (
+
                         <LazyLoad key={item.catalog_number} height={200} offset={[-100, 50]}>
-                            {/* <Link to="/Prdocut1"> */}
-                            <div className="product-card">
-                                <img src={item.image} alt="product iamge" />
-                                <div className="product-title">{item.name}</div>
-                                <div className="product-category">{item.category}</div>
-                                <div className="product-price">{item.price}<span className="product-unit">{item.unit}</span></div>
-                                <div className="buy-button">Buy Now</div>
-                            </div>
-                            {/* </Link> */}
+                            <Link to={item.name}>
+                                <div className="product-card">
+                                    <img src={item.image} alt="product iamge" />
+                                    <div className="product-title">{item.name}</div>
+                                    <div className="product-category">{item.category}</div>
+                                    <div className="product-price">{item.price}<span className="product-unit">{item.unit}</span></div>
+                                    <div className="buy-button">View Details</div>
+                                </div>
+                            </Link>
                         </LazyLoad>
 
                     )
