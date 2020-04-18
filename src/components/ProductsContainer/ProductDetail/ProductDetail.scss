@@ -1,16 +1,15 @@
 .product-detail-container {
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 50px auto;
   display: flex;
   flex-flow: row wrap;
-
   justify-content: center;
 }
 
 .product-left-container {
-  margin: 50px 30px;
+  //   padding: 50px 30px;
   img {
-    max-width: 500px;
+    max-width: 100%;
     max-height: 450px;
     object-fit: cover;
   }
@@ -19,5 +18,5 @@
 .product-right-container {
   //   min-width: 500px;
   text-align: left;
-  margin: 50px 30px;
+  padding: 50px 30px;
 }
