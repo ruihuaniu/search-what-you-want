@@ -34,9 +34,9 @@ function ProductsContainer() {
                     return (
 
                         <LazyLoad key={item.catalog_number} height={200} offset={[-100, 50]}>
-                            <Link to={item.name}>
+                            <Link to={{ pathname: item.name, data: item.price }}>
                                 <div className="product-card">
-                                    <img src={item.image} alt="product iamge" />
+                                    <img src={item.image} alt="product" />
                                     <div className="product-title">{item.name}</div>
                                     <div className="product-category">{item.category}</div>
                                     <div className="product-price">{item.price}<span className="product-unit">{item.unit}</span></div>

@@ -1,9 +1,10 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import './ProductDetail.scss'
 
 function ProductDetail() {
     let { title } = useParams();
+    let { data } = useLocation();
 
     return (
         <div className="product-detail-container">
@@ -12,6 +13,7 @@ function ProductDetail() {
             </div>
             <div className="product-right-container">
                 <h1>{title}</h1>
+                <h2>{data}</h2>
                 <h2>Product details page</h2>
             </div>
 
