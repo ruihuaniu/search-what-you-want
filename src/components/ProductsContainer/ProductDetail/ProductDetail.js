@@ -4,7 +4,9 @@ import './ProductDetail.scss'
 import SearchBar from '../../SearchBar/SearchBar';
 
 function ProductDetail() {
-    //let { title } = useParams();
+    let title = useParams();
+    console.log("title is: ", title);
+
     let { item } = useLocation();
     console.log("item is :", item);
 

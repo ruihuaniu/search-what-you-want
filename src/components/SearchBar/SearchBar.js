@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import './SearchBar.scss'
 import { ProductContext } from '../ProductContext'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 function SearchBar(props) {
 
@@ -13,8 +13,15 @@ function SearchBar(props) {
     const [validateResult, setValidateResult] = useState(true)
 
     const handleSubmit = (e) => {
-        history.push('/')
-        history.goBack()
+        // history.push('/')
+
+        console.log("history is: ", history);
+        if (history.location.pathname !== "/") {
+            console.log("history pathname", history.pathname);
+
+            history.goBack()
+        }
+
         console.log(inputValue);
         console.log("data is: ", data);
         const result = data.filter((item) => { return item.name.toLowerCase().includes(inputValue.toLowerCase()) });
