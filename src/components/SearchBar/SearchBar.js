@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './SearchBar.scss'
+import { ProductContext } from '../ProductContext'
+import { useHistory } from 'react-router-dom'
 
 function SearchBar(props) {
+
+    //const [products, setProducts] = useContext(ProductContext)
+    const { products, setProducts, data } = useContext(ProductContext)
+    const history = useHistory()
 
     const [inputValue, setInputValue] = useState("")
     const [validateResult, setValidateResult] = useState(true)
 
     const handleSubmit = (e) => {
+        history.push('/')
+        history.goBack()
         console.log(inputValue);
-        console.log("data is: ", props.data);
-        const result = props.data.filter((item) => { return item.name.toLowerCase().includes(inputValue.toLowerCase()) });
+        console.log("data is: ", data);
+        const result = data.filter((item) => { return item.name.toLowerCase().includes(inputValue.toLowerCase()) });
         console.log("result is:", result);
-
-        props.setProducts(result)
+        setProducts(result);
         e.preventDefault();
     }
 

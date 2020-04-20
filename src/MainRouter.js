@@ -12,7 +12,7 @@ function MainRouter() {
             <div>
                 <Switch>
                     <Route path="/" exact component={ProductsContainer} />
-                    <Route path="/:title" children={<ProductDetail />} />>
+                    <Route path="/:title" component={ProductDetail} />>
                  </Switch>
             </div>
         </Router>
