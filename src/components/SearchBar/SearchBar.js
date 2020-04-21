@@ -11,6 +11,7 @@ function SearchBar(props) {
 
     const [inputValue, setInputValue] = useState("")
     const [validateResult, setValidateResult] = useState(true)
+    const [warningInfo, setWarningInfo] = useState("")
 
     const handleSubmit = (e) => {
 
@@ -23,12 +24,16 @@ function SearchBar(props) {
             history.push('/shop')
         }
 
-        console.log(inputValue);
-        console.log("data is: ", data);
         const result = data.filter((item) => { return item.name.toLowerCase().includes(inputValue.toLowerCase()) });
-        console.log("result is:", result);
+        console.log("result is:", Boolean(result));
         setProducts(result);
-        setInputValue("");
+        if (result.length === 0) {
+            setWarningInfo("Woops, no results found. Try another name :)")
+        } else {
+            setWarningInfo("")
+        }
+
+        // setInputValue("");
         e.preventDefault();
     }
 
@@ -40,24 +45,28 @@ function SearchBar(props) {
         if (processedInputValue.length > 10) {
             //setValidateResult(validateExpression.test(processedInputValue));
             setValidateResult(false)
-        } else (
+            setWarningInfo("Warning: the length of your input should be within 10 characters")
+        } else {
             setValidateResult(true)
-        )
+            setWarningInfo("")
+        }
+
+
 
         console.log(validateResult);
     }
 
     return (
-        <div className="searchBar-container">
-            <form onSubmit={handleSubmit}>
-                <input type="text" className={validateResult ? "search-input" : "search-input validate-error"}
+        <div className="searchBar-container homepage-style">
+            <form className="searchBar-form" onSubmit={handleSubmit}>
+                <input type="text" className={validateResult ? "search-input " : "search-input validate-error"}
                     placeholder="Search item name here..."
                     title="the length of your input should be within 10 characters"
                     value={inputValue} onChange={handleChange} />
                 <button>Search</button>
             </form>
             {/* <div dangerouslySetInnerHTML={{ __html: inputValue }}></div> */}
-
+            <div style={{ color: 'red' }}>{warningInfo}</div>
         </div>
     )
 }

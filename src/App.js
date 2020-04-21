@@ -8,6 +8,7 @@ import MainRouter from './MainRouter';
 import Header from './components/Header/Header';
 import ProductsContainer from './components/ProductsContainer/ProductsContainer';
 import ProductDetail from './components/ProductsContainer/ProductDetail/ProductDetail';
+import Home from './components/Home/Home';
 
 function App() {
 
@@ -36,9 +37,9 @@ function App() {
 
         {/* <ProductsContainer /> */}
         <ProductContext.Provider value={{ products, setProducts, data }} >
-          <SearchBar />
+          {/* <SearchBar /> */}
           <Switch>
-            <Route path="/" exact />
+            <Route path="/" exact component={Home} />
             <Route path="/shop" exact component={ProductsContainer} />
             <Route path="/shop/:title" component={ProductDetail} />>
                  </Switch>

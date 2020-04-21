@@ -12,6 +12,8 @@ function ProductsContainer() {
 
 
     const { products, setProducts, data } = useContext(ProductContext)
+    console.log("products is:", products);
+
     return (
 
         <div className="main-container">

@@ -1,0 +1,13 @@
+.home-container {
+  background: url("/images/home-data.jpg") no-repeat scroll;
+  width: 100%;
+  height: 80vh;
+  background-size: cover;
+
+  .home-motto {
+    color: #ffffff;
+    font-size: 25px;
+    font-style: italic;
+    text-align: center;
+  }
+}
