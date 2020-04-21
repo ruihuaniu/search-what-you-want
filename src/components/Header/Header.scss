@@ -4,23 +4,31 @@
   background: #232323;
   color: #ffffff;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 
   .header-container-logo {
     width: 20%;
     font-size: 20px;
   }
 
-  .header-container-menu {
-    width: 100%;
+  //   .header-container-menu {
+  //     width: 100%;
+
+  .menu-container {
+    list-style: none;
+    width: 50%;
     font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+  }
 
-    .menu-home {
-      color: #ffffff;
-      text-decoration: none;
-    }
+  .menu-item {
+    color: #ffffff;
+    text-decoration: none;
+  }
 
-    .menu-home:hover {
-      color: #82cdff;
-    }
+  .menu-item:hover {
+    color: #82cdff;
   }
 }

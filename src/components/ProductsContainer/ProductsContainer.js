@@ -16,14 +16,14 @@ function ProductsContainer() {
 
         <div className="main-container">
             {/* <SearchBar setProducts={setProdcuts} data={data} /> */}
-            <SearchBar />
+
             <div className="products-container">
 
                 {products.map((item) => {
                     return (
 
                         <LazyLoad key={item.catalog_number} height={200} offset={[-100, 50]}>
-                            <Link to={{ pathname: item.name, item: item }}>
+                            <Link to={{ pathname: `/shop/${item.name}`, item: item }}>
                                 <div className="product-card">
                                     <img src={item.image} alt="product" />
                                     <div className="product-title">{item.name}</div>

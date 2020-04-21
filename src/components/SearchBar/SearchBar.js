@@ -13,13 +13,14 @@ function SearchBar(props) {
     const [validateResult, setValidateResult] = useState(true)
 
     const handleSubmit = (e) => {
-        // history.push('/')
+
 
         console.log("history is: ", history);
-        if (history.location.pathname !== "/") {
+        if (history.location.pathname !== "/shop") {
             console.log("history pathname", history.pathname);
 
-            history.goBack()
+            //history.goBack()
+            history.push('/shop')
         }
 
         console.log(inputValue);
@@ -27,6 +28,7 @@ function SearchBar(props) {
         const result = data.filter((item) => { return item.name.toLowerCase().includes(inputValue.toLowerCase()) });
         console.log("result is:", result);
         setProducts(result);
+        setInputValue("");
         e.preventDefault();
     }
 
@@ -35,7 +37,7 @@ function SearchBar(props) {
         //const validateExpression = RegExp("[abc]{30}")
         const processedInputValue = e.target.value.split(" ").join("")
 
-        if (processedInputValue.length > 30) {
+        if (processedInputValue.length > 10) {
             //setValidateResult(validateExpression.test(processedInputValue));
             setValidateResult(false)
         } else (
@@ -50,7 +52,7 @@ function SearchBar(props) {
             <form onSubmit={handleSubmit}>
                 <input type="text" className={validateResult ? "search-input" : "search-input validate-error"}
                     placeholder="Search item name here..."
-                    title="the length of your input should be within 30 characters"
+                    title="the length of your input should be within 10 characters"
                     value={inputValue} onChange={handleChange} />
                 <button>Search</button>
             </form>

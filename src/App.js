@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.scss';
 import { ProductContext } from './components/ProductContext.js'
 import SearchBar from './components/SearchBar/SearchBar';
 import Footer from './components/Footer/Footer';
 import MainRouter from './MainRouter';
 import Header from './components/Header/Header';
+import ProductsContainer from './components/ProductsContainer/ProductsContainer';
+import ProductDetail from './components/ProductsContainer/ProductDetail/ProductDetail';
 
 function App() {
 
@@ -31,10 +33,17 @@ function App() {
     <Router>
       <div className="app-container">
         <Header />
+
         {/* <ProductsContainer /> */}
         <ProductContext.Provider value={{ products, setProducts, data }} >
-          {/* <SearchBar data={data} /> */}
-          <MainRouter />
+          <SearchBar />
+          <Switch>
+            <Route path="/" exact />
+            <Route path="/shop" exact component={ProductsContainer} />
+            <Route path="/shop/:title" component={ProductDetail} />>
+                 </Switch>
+
+          {/* <MainRouter /> */}
           <Footer />
         </ProductContext.Provider>
 

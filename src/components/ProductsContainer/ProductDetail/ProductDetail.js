@@ -13,7 +13,7 @@ function ProductDetail() {
 
     return (
         <div className="main-container">
-            <SearchBar />
+
             <div className="product-detail-container">
 
                 <div className="product-left-container">
