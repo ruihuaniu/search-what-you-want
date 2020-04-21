@@ -5,6 +5,7 @@ import { ProductContext } from './components/ProductContext.js'
 import SearchBar from './components/SearchBar/SearchBar';
 import Footer from './components/Footer/Footer';
 import MainRouter from './MainRouter';
+import Header from './components/Header/Header';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
+        <Header />
         {/* <ProductsContainer /> */}
         <ProductContext.Provider value={{ products, setProducts, data }} >
           {/* <SearchBar data={data} /> */}

@@ -1,0 +1,26 @@
+.header-container {
+  text-align: center;
+  padding: 30px;
+  background: #232323;
+  color: #ffffff;
+  display: flex;
+
+  .header-container-logo {
+    width: 20%;
+    font-size: 20px;
+  }
+
+  .header-container-menu {
+    width: 100%;
+    font-size: 15px;
+
+    .menu-home {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .menu-home:hover {
+      color: #82cdff;
+    }
+  }
+}
