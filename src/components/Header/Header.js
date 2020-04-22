@@ -1,11 +1,12 @@
 import React from 'react'
 import './Header.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 
 function Header() {
+    const location = useLocation()
     return (
-        <div className="header-container">
+        <div className={location.pathname === "/" ? "header-container homepage-header" : "header-container"}>
             <div><Link to="/" className="header-container-logo">SEARCH</Link></div>
             {/* <div><SearchBar /></div> */}
             {/* <div className="header-container-menu"> */}
@@ -14,7 +15,7 @@ function Header() {
                 <li><Link to="/shop" className="menu-item">Shop</Link></li>
             </ul>
             {/* </div> */}
-        </div>
+        </div >
     )
 }
 

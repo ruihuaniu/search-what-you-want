@@ -1,15 +1,12 @@
 import React from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useRouteMatch, useHistory } from 'react-router-dom'
 import './ProductDetail.scss'
 import SearchBar from '../../SearchBar/SearchBar';
 
 function ProductDetail() {
-    let title = useParams();
-    console.log("title is: ", title);
 
-    let { item } = useLocation();
+    const { item } = useLocation();
     console.log("item is :", item);
-
 
     return (
         <div className="main-container">

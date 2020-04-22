@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import './SearchBar.scss'
 import { ProductContext } from '../ProductContext'
 import { useHistory, Link } from 'react-router-dom'
+import Header from '../Header/Header'
 
 function SearchBar(props) {
 
@@ -51,14 +52,12 @@ function SearchBar(props) {
             setValidateResult(true)
             setWarningInfo("")
         }
-
-
-
         console.log(validateResult);
     }
 
     return (
-        <div className={history.location.pathname === "/" ? "searchBar-container homepage-style" : "searchBar-container"}>
+        <div className={history.location.pathname === "/" ? "searchBar-container homepage-searchBar" : "searchBar-container"}>
+            {/* <Header /> */}
             <form className="searchBar-form" onSubmit={handleSubmit}>
                 <input type="text" className={validateResult ? "search-input " : "search-input validate-error"}
                     placeholder="Search item name here..."

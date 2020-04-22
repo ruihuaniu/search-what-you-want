@@ -47,7 +47,7 @@
   }
 }
 
-.homepage-style {
+.homepage-searchBar {
   display: flex;
   flex-direction: column;
   // flex-wrap: wrap;
@@ -60,7 +60,7 @@
   background-size: cover;
 }
 
-.homepage-style::after {
+.homepage-searchBar::after {
   content: " Something  good will happen";
   display: block;
   color: #ffffff;
