@@ -37,7 +37,7 @@ function App() {
 
         {/* <ProductsContainer /> */}
         <ProductContext.Provider value={{ products, setProducts, data }} >
-          {/* <SearchBar /> */}
+          <SearchBar />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/shop" exact component={ProductsContainer} />

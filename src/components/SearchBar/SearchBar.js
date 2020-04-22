@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import classNames from 'classnames'
 import './SearchBar.scss'
 import { ProductContext } from '../ProductContext'
 import { useHistory, Link } from 'react-router-dom'
@@ -57,7 +58,7 @@ function SearchBar(props) {
     }
 
     return (
-        <div className="searchBar-container homepage-style">
+        <div className={history.location.pathname === "/" ? "searchBar-container homepage-style" : "searchBar-container"}>
             <form className="searchBar-form" onSubmit={handleSubmit}>
                 <input type="text" className={validateResult ? "search-input " : "search-input validate-error"}
                     placeholder="Search item name here..."

@@ -1,7 +1,7 @@
 .searchBar-container {
   text-align: center;
   padding: 30px 0;
-  margin-top: 30px;
+  // margin-top: 30px;
 
   .searchBar-form {
     width: 100%;
@@ -49,7 +49,25 @@
 
 .homepage-style {
   display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-end;
-  height: 40vh;
+  align-items: center;
+  // height: 40vh;
+  background: url("/images/home-data.jpg") no-repeat scroll;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-size: cover;
+}
+
+.homepage-style::after {
+  content: " Something  good will happen";
+  display: block;
+  color: #ffffff;
+  font-size: 30px;
+  font-style: italic;
+  padding-top: 30px;
+  // width: 100%;
+  // white-space: pre;
+  // flex: none;
 }

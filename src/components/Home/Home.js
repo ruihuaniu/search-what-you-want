@@ -5,8 +5,8 @@ import SearchBar from '../SearchBar/SearchBar'
 function Home() {
     return (
         <div className="home-container">
-            <SearchBar />
-            <div className="home-motto"> Something good will happen</div>
+            {/* <SearchBar /> */}
+            {/* <div className="home-motto"> Something good will happen</div> */}
 
         </div>
     )

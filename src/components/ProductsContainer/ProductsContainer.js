@@ -17,7 +17,7 @@ function ProductsContainer() {
     return (
 
         <div className="main-container">
-            {/* <SearchBar setProducts={setProdcuts} data={data} /> */}
+            {/* <SearchBar /> */}
 
             <div className="products-container">
 
