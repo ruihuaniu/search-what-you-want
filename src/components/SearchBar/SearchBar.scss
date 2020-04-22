@@ -50,10 +50,16 @@
 .homepage-searchBar {
   display: flex;
   flex-direction: column;
-  // flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  // height: 40vh;
+
+  //code below to make the home page only show the search bar
+  // height: 100vh;
+  // padding: 30vh 0;
+  // position: absolute;
+  // left: 50%;
+  // top: 40%;
+  // transform: translate(-50%, -40%);
   background: url("/images/home-data.jpg") no-repeat scroll;
   width: 100%;
   height: calc(100vh - 70px);

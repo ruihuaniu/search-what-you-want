@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Barton's product - Serene Project",
+        "type": "commercial",
+        "link": "http://serene.tk",
+        "image": "/images/serene.png",
+        "description": "A Web application based on Monash Industry project."
+    },
+    {
+        "id": 2,
+        "title": "Barton's product - Timber Floor Centre Project",
+        "type": "commercial ecommerce",
+        "link": "https://www.timberfloorcentre.com.au",
+        "image": "/images/timber_floor_center.png",
+        "description": "A Commercial project with various eCommerce features."
+    },
+    {
+        "id": 3,
+        "title": "Barton's product - Admin Management Tool",
+        "type": "commercial personal",
+        "link": "https://admin-management.now.sh",
+        "image": "/images/admin_management.png",
+        "description": "A admin management tool with various features."
+    },
+    {
+        "id": 4,
+        "title": "Barton's product - TFC Commercial Project",
+        "type": "commercial ecommerce",
+        "link": "https://www.tfccommercial.com.au",
+        "image": "./images/tfc_commercial.png",
+        "description": "A Commercial Web application project with basic e-commerce features."
+    },
+    {
+        "id": 5,
+        "title": "Barton's product - Barton web Project",
+        "type": "personal",
+        "link": "https://bartonweb.web.app/",
+        "image": "/images/barton_web.png",
+        "description": "A project based on React and Node.js."
+    },
+    {
+        "id": 6,
+        "title": "Barton's product - Searching what you want",
+        "type": "personal",
+        "link": "https://bartonweb.web.app/",
+        "image": "/images/interesting_search.png",
+        "description": "A project based on React and Node.js."
+    }
+]

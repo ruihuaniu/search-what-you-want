@@ -17,10 +17,10 @@ function ProductDetail() {
                     <img src={item && item.image} alt="product" />
                 </div>
                 <div className="product-right-container">
-                    <h1>{item && item.name}</h1>
+                    <h1>{item && item.title}</h1>
                     <h2>{item && item.price + item.unit}</h2>
                     <h3>{item && item.category}</h3>
-                    <h2>Product details page</h2>
+                    <h2>{item && item.description}</h2>
                 </div>
 
             </div>

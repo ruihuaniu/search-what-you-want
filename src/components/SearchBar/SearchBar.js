@@ -4,8 +4,11 @@ import './SearchBar.scss'
 import { ProductContext } from '../ProductContext'
 import { useHistory, Link } from 'react-router-dom'
 import Header from '../Header/Header'
+import bartonData from '../../data/barton-data'
 
 function SearchBar(props) {
+    // console.log("bartondata is:", bartonData);
+
 
     //const [products, setProducts] = useContext(ProductContext)
     const { products, setProducts, data } = useContext(ProductContext)
@@ -26,8 +29,14 @@ function SearchBar(props) {
             history.push('/shop')
         }
 
-        const result = data.filter((item) => { return item.name.toLowerCase().includes(inputValue.toLowerCase()) });
-        console.log("result is:", Boolean(result));
+        const result = data.filter((item) => { return item.title.toLowerCase().includes(inputValue.toLowerCase()) });
+        console.log("result is:", result);
+        if (inputValue.toLowerCase().includes("melbourne")) {
+            result.push({ catalog_number: 1, title: "You got it, Congratulations", image: "/images/home-data.jpg", category: "special", description: "Product details page", price: "invaluable", unit: "" })
+        }
+        if (inputValue.toLowerCase().includes("barton")) {
+            result.push(...bartonData)
+        }
         setProducts(result);
         if (result.length === 0) {
             setWarningInfo("Woops, no results found. Try another name :)")

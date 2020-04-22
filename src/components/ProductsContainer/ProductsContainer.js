@@ -24,11 +24,11 @@ function ProductsContainer() {
                 {products.map((item) => {
                     return (
 
-                        <LazyLoad key={item.catalog_number} height={200} offset={[-100, 50]}>
-                            <Link to={{ pathname: `/shop/${item.name}`, item: item }}>
+                        <LazyLoad key={item.id} height={200} offset={[-100, 50]}>
+                            <Link to={{ pathname: `/shop/${item.title}`, item: item }}>
                                 <div className="product-card">
                                     <img src={item.image} alt="product" />
-                                    <div className="product-title">{item.name}</div>
+                                    <div className="product-title">{item.title}</div>
                                     <div className="product-category">{item.category}</div>
                                     <div className="product-price">{item.price}<span className="product-unit">{item.unit}</span></div>
                                     <div className="buy-button">View Details</div>
