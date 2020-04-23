@@ -23,7 +23,6 @@ function ProductsContainer() {
 
                 {products.map((item) => {
                     return (
-
                         <LazyLoad key={item.id} height={200} offset={[-100, 50]}>
                             <Link to={{ pathname: `/shop/${item.title.split(" ").join("-")}`, item: item }}>
                                 <div className="product-card">
@@ -35,7 +34,6 @@ function ProductsContainer() {
                                 </div>
                             </Link>
                         </LazyLoad>
-
                     )
                 })}
 
