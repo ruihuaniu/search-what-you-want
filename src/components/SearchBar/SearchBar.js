@@ -70,7 +70,7 @@ function SearchBar(props) {
             <form className="searchBar-form" onSubmit={handleSubmit}>
                 <input type="text" className={validateResult ? "search-input " : "search-input validate-error"}
                     placeholder="Search item name here..."
-                    title="the length of your input should be within 10 characters"
+                    title="Try 'barton' to see the result :) "
                     value={inputValue} onChange={handleChange} />
                 <button>Search</button>
             </form>
