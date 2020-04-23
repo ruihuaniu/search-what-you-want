@@ -28,13 +28,13 @@ function SearchBar(props) {
             //history.goBack()
             history.push('/shop')
         }
-
+        const inputFormatted = inputValue.toLowerCase();
         const result = data.filter((item) => { return item.title.toLowerCase().includes(inputValue.toLowerCase()) });
         console.log("result is:", result);
-        if (inputValue.toLowerCase().includes("melbourne")) {
+        if (inputFormatted.includes("melbourne")) {
             result.push({ catalog_number: 1, title: "You got it, Congratulations", image: "/images/home-data.jpg", category: "special", description: "Product details page", price: "invaluable", unit: "" })
         }
-        if (inputValue.toLowerCase().includes("barton")) {
+        if (inputFormatted.includes("barton") || inputFormatted.includes("project")) {
             result.push(...bartonData)
         }
         setProducts(result);
