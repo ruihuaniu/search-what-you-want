@@ -15,7 +15,7 @@ function SearchBar(props) {
     const history = useHistory()
 
     const [inputValue, setInputValue] = useState("")
-    const [validateResult, setValidateResult] = useState(true)
+    const [isValid, setIsValid] = useState(true)
     const [warningInfo, setWarningInfo] = useState("")
 
     const handleSubmit = (e) => {
@@ -40,7 +40,7 @@ function SearchBar(props) {
         setProducts(result);
         if (result.length === 0) {
             setWarningInfo("Woops, no results found. Try another name :)")
-        } else {
+        } else if (isValid) {
             setWarningInfo("")
         }
 
@@ -54,21 +54,21 @@ function SearchBar(props) {
         const processedInputValue = e.target.value.split(" ").join("")
 
         if (processedInputValue.length > 10) {
-            //setValidateResult(validateExpression.test(processedInputValue));
-            setValidateResult(false)
+            //setIsValid(validateExpression.test(processedInputValue));
+            setIsValid(false)
             setWarningInfo("Warning: the length of your input should be within 10 characters")
         } else {
-            setValidateResult(true)
+            setIsValid(true)
             setWarningInfo("")
         }
-        console.log(validateResult);
+        console.log(isValid);
     }
 
     return (
         <div className={history.location.pathname === "/" ? "searchBar-container homepage-searchBar" : "searchBar-container"}>
             {/* <Header /> */}
             <form className="searchBar-form" onSubmit={handleSubmit}>
-                <input type="text" className={validateResult ? "search-input " : "search-input validate-error"}
+                <input type="text" className={isValid ? "search-input " : "search-input validate-error"}
                     placeholder="Search item name here..."
                     title="Try 'barton' to see the result :) "
                     value={inputValue} onChange={handleChange} />

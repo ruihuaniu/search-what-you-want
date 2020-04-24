@@ -28,7 +28,7 @@
         "title": "Barton's product - TFC Commercial Project",
         "type": "commercial ecommerce",
         "link": "https://www.tfccommercial.com.au",
-        "image": "./images/tfc_commercial.png",
+        "image": "/images/tfc_commercial.png",
         "description": "A Commercial Web application project with basic e-commerce features."
     },
     {
