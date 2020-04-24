@@ -7,7 +7,7 @@ function Header() {
     const location = useLocation()
     return (
         <div className={location.pathname === "/" ? "header-container homepage-header" : "header-container"}>
-            <div><Link to="/" className="header-container-logo">SEARCH</Link></div>
+            <div className="logo-container"><Link to="/" className="header-container-logo">SEARCH</Link></div>
             {/* <div><SearchBar /></div> */}
             {/* <div className="header-container-menu"> */}
             <ul className="menu-container">
