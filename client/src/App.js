@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import axios from 'axios'
 import './App.scss';
 import { ProductContext } from './components/ProductContext.js'
 import SearchBar from './components/SearchBar/SearchBar';
@@ -27,8 +28,19 @@ function App() {
 
   const [products, setProducts] = useState(data)
 
+  useEffect(() => {
+    async function getData() {
+      try {
+        const result = await axios.get("https://jsonplaceholder.typicode.com/posts?_limit=5");
+        console.log(result);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
+    getData();
 
+  }, [])
 
   return (
     <Router>
