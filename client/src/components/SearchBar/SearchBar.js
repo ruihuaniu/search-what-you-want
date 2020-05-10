@@ -7,7 +7,6 @@ import Header from '../Header/Header'
 import bartonData from '../../data/barton-data'
 
 function SearchBar(props) {
-    // console.log("bartondata is:", bartonData);
 
 
     //const [products, setProducts] = useContext(ProductContext)

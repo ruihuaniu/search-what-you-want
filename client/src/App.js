@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import ProductsContainer from './components/ProductsContainer/ProductsContainer';
 import ProductDetail from './components/ProductsContainer/ProductDetail/ProductDetail';
 import Home from './components/Home/Home';
+import Result from './pages/Result/Result';
 
 function App() {
 
@@ -31,8 +32,8 @@ function App() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.get("https://jsonplaceholder.typicode.com/posts?_limit=5");
-        console.log(result);
+        const result = await axios.get("http://numbersapi.com/36");
+        console.log("axios result is ", result.data);
       } catch (err) {
         console.log(err);
       }
@@ -52,7 +53,7 @@ function App() {
           <SearchBar />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/shop" exact component={ProductsContainer} />
+            <Route path="/shop" exact component={Result} />
             <Route path="/shop/:title" component={ProductDetail} />>
                  </Switch>
 
