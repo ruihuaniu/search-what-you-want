@@ -23,7 +23,7 @@ function SearchBar(props) {
     useEffect(() => {
         async function getData() {
             try {
-                const result = await axios.get(`http://numbersapi.com/${inputValue}`)
+                const result = await axios.get(`http://numbersapi.com/${parseInt(inputValue)}`)  //parse to integer
                 console.log("result on search bar", result);
                 setProducts(result.data)
             } catch (err) {
@@ -40,19 +40,17 @@ function SearchBar(props) {
         console.log("history is: ", history);
         if (history.location.pathname !== "/shop") {
             console.log("history pathname", history.pathname);
-
             //history.goBack()
             history.push('/shop')
         }
 
-        console.log("categoryvalue is ", categoryValue);
 
         switch (categoryValue) {
             case "product":
                 const inputFormatted = inputValue.toLowerCase();
                 const result = data.filter((item) => { return item.title.toLowerCase().includes(inputValue.toLowerCase()) });
 
-                console.log("result is:", result);
+                // console.log("result is:", result);
                 if (inputFormatted.includes("melbourne")) {
                     result.push({ catalog_number: 1, title: "You got it, Congratulations", image: "/images/home-data.jpg", category: "special", description: "Product details page", price: "invaluable", unit: "" })
                 }
@@ -68,21 +66,13 @@ function SearchBar(props) {
                 }
                 break;
             case "lucky":
-                console.log("this is a luck category");
-                setProducts("lucky! wait...")
+
+                setProducts("Lucky! wait...")
                 break;
 
 
 
         }
-
-
-
-
-
-
-
-        // setInputValue("");
         e.preventDefault();
     }
 
@@ -92,18 +82,25 @@ function SearchBar(props) {
 
     const handleChange = (e) => {
         setInputValue(e.target.value)
+        // console.log("type of", Number.isInteger(parseInt(e.target.value)));
+
         //const validateExpression = RegExp("[abc]{30}")
         const processedInputValue = e.target.value.split(" ").join("")
-
-        if (processedInputValue.length > 10) {
-            //setIsValid(validateExpression.test(processedInputValue));
+        if (categoryValue === "lucky" && !Number.isInteger(Number(e.target.value))) {
             setIsValid(false)
-            setWarningInfo("Warning: the length of your input should be within 10 characters")
+            setWarningInfo("Warning: the input should be an integer")
         } else {
-            setIsValid(true)
-            setWarningInfo("")
+            if (processedInputValue.length > 10) {
+                //setIsValid(validateExpression.test(processedInputValue));
+                setIsValid(false)
+                setWarningInfo("Warning: the length of your input should be within 10 characters")
+            } else {
+                setIsValid(true)
+                setWarningInfo("")
+            }
         }
-        console.log(isValid);
+
+        // console.log(isValid);
     }
 
     return (

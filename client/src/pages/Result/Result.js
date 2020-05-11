@@ -6,7 +6,7 @@ import './Result.scss'
 function Result() {
     const { products, setProducts } = useContext(ProductContext)
 
-    console.log("product on result page ", products);
+    // console.log("product on result page ", products);
 
 
     if (Array.isArray(products)) {
