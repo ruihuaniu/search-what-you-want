@@ -23,7 +23,7 @@ function SearchBar(props) {
     useEffect(() => {
         async function getData() {
             try {
-                const result = await axios.get(`http://numbersapi.com/${parseInt(inputValue)}`)  //parse to integer
+                const result = await axios.get(`http://numbersapi.com/${Number(inputValue)}`)  //parse to integer
                 console.log("result on search bar", result);
                 setProducts(result.data)
             } catch (err) {
@@ -33,24 +33,24 @@ function SearchBar(props) {
         if (categoryValue === "lucky") {
             getData()
         }
-    }, [clickCount])
+    }, [inputValue])
 
     const handleSubmit = (e) => {
         setClickCount((prev) => prev + 1)
         console.log("history is: ", history);
-        if (history.location.pathname !== "/shop") {
+        if (history.location.pathname !== "/result") {   //navigation to result page to show the search results
             console.log("history pathname", history.pathname);
             //history.goBack()
-            history.push('/shop')
+            history.push('/result')
         }
 
 
         switch (categoryValue) {
             case "product":
                 const inputFormatted = inputValue.toLowerCase();
-                const result = data.filter((item) => { return item.title.toLowerCase().includes(inputValue.toLowerCase()) });
+                const result = data.filter((item) => { return item.title.toLowerCase().includes(inputFormatted) });
 
-                // console.log("result is:", result);
+                console.log("result is:", result);
                 if (inputFormatted.includes("melbourne")) {
                     result.push({ catalog_number: 1, title: "You got it, Congratulations", image: "/images/home-data.jpg", category: "special", description: "Product details page", price: "invaluable", unit: "" })
                 }
@@ -67,7 +67,7 @@ function SearchBar(props) {
                 break;
             case "lucky":
 
-                setProducts("Lucky! wait...")
+                products || setProducts("Lucky! wait...")   //only setProducts if products is empty
                 break;
 
 
@@ -77,7 +77,8 @@ function SearchBar(props) {
     }
 
     const handleCategoryChange = (e) => {
-        setCategoryValue(e.target.value)
+        setCategoryValue(e.target.value);
+        setWarningInfo("")
     }
 
     const handleChange = (e) => {
@@ -88,7 +89,7 @@ function SearchBar(props) {
         const processedInputValue = e.target.value.split(" ").join("")
         if (categoryValue === "lucky" && !Number.isInteger(Number(e.target.value))) {
             setIsValid(false)
-            setWarningInfo("Warning: the input should be an integer")
+            setWarningInfo("Warning: your input should be an integer")
         } else {
             if (processedInputValue.length > 10) {
                 //setIsValid(validateExpression.test(processedInputValue));

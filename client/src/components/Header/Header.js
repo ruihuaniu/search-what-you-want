@@ -12,7 +12,7 @@ function Header() {
             {/* <div className="header-container-menu"> */}
             <ul className="menu-container">
                 <li><Link to="/" className="menu-item">Home</Link></li>
-                <li><Link to="/shop" className="menu-item">Shop</Link></li>
+                <li><Link to="/result" className="menu-item">Result</Link></li>
             </ul>
             {/* </div> */}
         </div >

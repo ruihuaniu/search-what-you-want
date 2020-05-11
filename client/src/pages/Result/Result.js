@@ -5,11 +5,13 @@ import './Result.scss'
 
 function Result() {
     const { products, setProducts } = useContext(ProductContext)
+    console.log("product on result page ", products);
 
-    // console.log("product on result page ", products);
 
+    if (Array.isArray(products)) {  // use "categoryValue" rather than "products" to check is better
 
-    if (Array.isArray(products)) {
+        console.log(Array.isArray(products));
+
         return <ProductsContainer />
     } else {
         return (

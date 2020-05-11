@@ -12,7 +12,7 @@ function ProductsContainer() {
 
 
     const { products, setProducts, data } = useContext(ProductContext)
-    // console.log("products is:", products);
+    console.log("products on container is:", products);
 
     return (
 
@@ -23,8 +23,9 @@ function ProductsContainer() {
 
                 {products.map((item) => {
                     return (
-                        <LazyLoad key={item.id} height={200} offset={[-100, 50]}>
-                            <Link to={{ pathname: `/shop/${item.title.split(" ").join("-")}`, item: item }}>
+                        // <LazyLoad key={item.id} height={200} offset={[-100, 50]}>
+                        <div key={item.id}>
+                            <Link to={{ pathname: `/result/${item.title.split(" ").join("-")}`, item: item }}>
                                 <div className="product-card">
                                     <img src={item.image} alt="product" />
                                     <div className="product-title">{item.title}</div>
@@ -33,7 +34,9 @@ function ProductsContainer() {
                                     <div className="buy-button">View Details</div>
                                 </div>
                             </Link>
-                        </LazyLoad>
+                        </div>
+
+                        // </LazyLoad>
                     )
                 })}
 

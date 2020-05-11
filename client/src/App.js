@@ -53,8 +53,8 @@ function App() {
           <SearchBar />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/shop" exact component={Result} />
-            <Route path="/shop/:title" component={ProductDetail} />>
+            <Route path="/result" exact component={Result} />
+            <Route path="/result/:title" component={ProductDetail} />>
                  </Switch>
 
           {/* <MainRouter /> */}
