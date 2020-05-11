@@ -28,6 +28,7 @@ function App() {
   ]
 
   const [products, setProducts] = useState(data)
+  const [category, setCategory] = useState("product")
 
   useEffect(() => {
     // async function getData() {
@@ -49,7 +50,7 @@ function App() {
         <Header />
 
         {/* <ProductsContainer /> */}
-        <ProductContext.Provider value={{ products, setProducts, data }} >
+        <ProductContext.Provider value={{ products, setProducts, category, setCategory, data }} >
           <SearchBar />
           <Switch>
             <Route path="/" exact component={Home} />

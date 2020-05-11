@@ -12,7 +12,7 @@ function ProductsContainer() {
 
 
     const { products, setProducts, data } = useContext(ProductContext)
-    console.log("products on container is:", products);
+    // console.log("products on container is:", products);
 
     return (
 

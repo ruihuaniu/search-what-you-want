@@ -11,11 +11,11 @@ function SearchBar(props) {
 
 
     //const [products, setProducts] = useContext(ProductContext)
-    const { products, setProducts, data } = useContext(ProductContext)
+    const { products, setProducts, category, setCategory, data } = useContext(ProductContext)
     const history = useHistory()
 
     const [inputValue, setInputValue] = useState("")
-    const [categoryValue, setCategoryValue] = useState("product")
+
     const [isValid, setIsValid] = useState(true)
     const [clickCount, setClickCount] = useState(null)
     const [warningInfo, setWarningInfo] = useState("")
@@ -24,33 +24,33 @@ function SearchBar(props) {
         async function getData() {
             try {
                 const result = await axios.get(`http://numbersapi.com/${Number(inputValue)}`)  //parse to integer
-                console.log("result on search bar", result);
+                // console.log("result on search bar", result);
                 setProducts(result.data)
             } catch (err) {
                 console.log(err);
             }
         }
-        if (categoryValue === "lucky") {
+        if (category === "lucky") {
             getData()
         }
-    }, [inputValue])
+    }, [clickCount]) //dependency to invoke useEffect
 
     const handleSubmit = (e) => {
         setClickCount((prev) => prev + 1)
-        console.log("history is: ", history);
+        // console.log("history is: ", history);
         if (history.location.pathname !== "/result") {   //navigation to result page to show the search results
-            console.log("history pathname", history.pathname);
+            // console.log("history pathname", history.pathname);
             //history.goBack()
             history.push('/result')
         }
 
 
-        switch (categoryValue) {
+        switch (category) {
             case "product":
                 const inputFormatted = inputValue.toLowerCase();
                 const result = data.filter((item) => { return item.title.toLowerCase().includes(inputFormatted) });
 
-                console.log("result is:", result);
+                // console.log("result is:", result);
                 if (inputFormatted.includes("melbourne")) {
                     result.push({ catalog_number: 1, title: "You got it, Congratulations", image: "/images/home-data.jpg", category: "special", description: "Product details page", price: "invaluable", unit: "" })
                 }
@@ -67,7 +67,7 @@ function SearchBar(props) {
                 break;
             case "lucky":
 
-                products || setProducts("Lucky! wait...")   //only setProducts if products is empty
+                setProducts("Lucky! wait...")   // setProducts to welcome during the axios fetch process 
                 break;
 
 
@@ -77,8 +77,10 @@ function SearchBar(props) {
     }
 
     const handleCategoryChange = (e) => {
-        setCategoryValue(e.target.value);
+        setCategory(e.target.value);
         setWarningInfo("")
+        setInputValue("")
+
     }
 
     const handleChange = (e) => {
@@ -87,7 +89,7 @@ function SearchBar(props) {
 
         //const validateExpression = RegExp("[abc]{30}")
         const processedInputValue = e.target.value.split(" ").join("")
-        if (categoryValue === "lucky" && !Number.isInteger(Number(e.target.value))) {
+        if (category === "lucky" && !Number.isInteger(Number(e.target.value))) {
             setIsValid(false)
             setWarningInfo("Warning: your input should be an integer")
         } else {
@@ -109,7 +111,7 @@ function SearchBar(props) {
             {/* <Header /> */}
             <form className="searchBar-form" onSubmit={handleSubmit}>
                 <select type="text" className="search-category"
-                    value={categoryValue}
+                    value={category}
                     onChange={handleCategoryChange}
                 >
                     <option value="product">Product</option>

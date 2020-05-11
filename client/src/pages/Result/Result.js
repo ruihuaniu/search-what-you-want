@@ -4,19 +4,18 @@ import { ProductContext } from '../../components/ProductContext'
 import './Result.scss'
 
 function Result() {
-    const { products, setProducts } = useContext(ProductContext)
-    console.log("product on result page ", products);
+    const { products, category } = useContext(ProductContext)
+    // console.log("product on result page ", products);
 
 
-    if (Array.isArray(products)) {  // use "categoryValue" rather than "products" to check is better
+    if (Array.isArray(products)) {  // 
 
-        console.log(Array.isArray(products));
+        // console.log(Array.isArray(products));
 
         return <ProductsContainer />
     } else {
         return (
             <div className="container">
-                {/* <div>This is the result page </div> */}
                 <div className="text">{products}</div>
             </div>
         )
