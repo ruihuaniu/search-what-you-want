@@ -23,9 +23,18 @@ function SearchBar(props) {
     useEffect(() => {
         async function getData() {
             try {
-                const result = await axios.get(`http://numbersapi.com/${Number(inputValue)}`)  //parse to integer
-                // console.log("result on search bar", result);
-                setProducts(result.data)
+                const result = await axios.get(`https://numbersapi.p.rapidapi.com/${Number(inputValue)}/trivia?fragment=true&notfound=floor&json=true`, {
+                    "headers": {
+                        "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                        "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"
+                    }
+                })  //parse to integer
+                console.log("result on search bar", result);
+                setProducts(result.data.text)
+
+                if (!result.data.found) {  //check if the number doesn't exist
+                    setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is list below`)
+                }
             } catch (err) {
                 console.log(err);
             }
@@ -115,7 +124,7 @@ function SearchBar(props) {
                     onChange={handleCategoryChange}
                 >
                     <option value="product">Product</option>
-                    <option value="lucky">Lucky No.</option>
+                    <option value="lucky">Lucky Number</option>
                 </select>
 
                 <input type="text" className={isValid ? "search-input " : "search-input validate-error"}
@@ -125,7 +134,7 @@ function SearchBar(props) {
                 <button>Search</button>
             </form>
             {/* <div dangerouslySetInnerHTML={{ __html: inputValue }}></div> */}
-            <div style={{ color: 'red' }}>{warningInfo}</div>
+            <div style={{ color: 'red', padding: 15 }}>{warningInfo}</div>
         </div>
     )
 }
