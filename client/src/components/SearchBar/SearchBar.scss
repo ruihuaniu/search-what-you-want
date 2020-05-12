@@ -14,6 +14,8 @@
     padding: 5px 5px 5px 15px;
     border: 1px solid #cacaca;
     border-radius: 20px 0 0 20px;
+    text-align: center;
+    text-align-last: center; // make the option align center on chrome
     // appearance: none;
 
     option {
@@ -51,7 +53,16 @@
 
   @media only screen and (max-width: 756px) {
     input[type="text"] {
-      width: 60%;
+      width: 55%;
+    }
+
+    .search-category {
+      width: 22%;
+    }
+
+    button {
+      width: 18%;
+      padding: 5px 8px;
     }
   }
 
