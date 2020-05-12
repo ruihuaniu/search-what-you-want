@@ -14,6 +14,8 @@ function SearchBar(props) {
     const { products, setProducts, category, setCategory, data } = useContext(ProductContext)
     const history = useHistory()
 
+    console.log("history pathname", history);
+
     const [inputValue, setInputValue] = useState("")
 
     const [isValid, setIsValid] = useState(true)
@@ -28,8 +30,8 @@ function SearchBar(props) {
                         "x-rapidapi-host": "numbersapi.p.rapidapi.com",
                         "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"
                     }
-                })  //parse to integer
-                console.log("result on search bar", result);
+                })
+                // console.log("result on search bar", result);
                 setProducts(result.data.text)
 
                 if (!result.data.found) {  //check if the number doesn't exist
@@ -44,11 +46,13 @@ function SearchBar(props) {
         }
     }, [clickCount]) //dependency to invoke useEffect
 
+
+
     const handleSubmit = (e) => {
         setClickCount((prev) => prev + 1)
         // console.log("history is: ", history);
         if (history.location.pathname !== "/result") {   //navigation to result page to show the search results
-            // console.log("history pathname", history.pathname);
+
             //history.goBack()
             history.push('/result')
         }
@@ -84,6 +88,7 @@ function SearchBar(props) {
         }
         e.preventDefault();
     }
+
 
     const handleCategoryChange = (e) => {
         setCategory(e.target.value);
