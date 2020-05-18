@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 import './SearchBar.scss'
 import { ProductContext } from '../ProductContext'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory, Link, useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
 import bartonData from '../../data/barton-data'
 import axios from 'axios'
@@ -13,14 +13,17 @@ function SearchBar(props) {
     //const [products, setProducts] = useContext(ProductContext)
     const { products, setProducts, category, setCategory, data } = useContext(ProductContext)
     const history = useHistory()
+    // console.log("history pathname", history);
+    const location = useLocation()   //not sure why history.location isn't working well in production, only works locally
+    // console.log("location pathname", location);
 
-    console.log("history pathname", history);
 
     const [inputValue, setInputValue] = useState("")
 
     const [isValid, setIsValid] = useState(true)
     const [clickCount, setClickCount] = useState(null)
     const [warningInfo, setWarningInfo] = useState("")
+    const [placeholder, setPlaceholder] = useState("Search item name here...")
 
     useEffect(() => {
         async function getData() {
@@ -51,7 +54,7 @@ function SearchBar(props) {
     const handleSubmit = (e) => {
         setClickCount((prev) => prev + 1)
         // console.log("history is: ", history);
-        if (history.location.pathname !== "/result") {   //navigation to result page to show the search results
+        if (location.pathname !== "/result") {   //navigation to result page to show the search results
 
             //history.goBack()
             history.push('/result')
@@ -92,6 +95,17 @@ function SearchBar(props) {
 
     const handleCategoryChange = (e) => {
         setCategory(e.target.value);
+        switch (e.target.value) {
+            case "product":
+                setPlaceholder("Search item name here...");
+                break;
+            case "lucky":
+                setPlaceholder("Search lucky number here...");
+                break;
+            default:
+                setPlaceholder("Search item name here...");
+        }
+
         setWarningInfo("")
         setInputValue("")
 
@@ -121,7 +135,7 @@ function SearchBar(props) {
     }
 
     return (
-        <div className={history.location.pathname === "/" ? "searchBar-container homepage-searchBar" : "searchBar-container"}>
+        <div className={location.pathname === "/" ? "searchBar-container homepage-searchBar" : "searchBar-container"}>
             {/* <Header /> */}
             <form className="searchBar-form" onSubmit={handleSubmit}>
                 <select type="text" className="search-category"
@@ -133,7 +147,7 @@ function SearchBar(props) {
                 </select>
 
                 <input type="text" className={isValid ? "search-input " : "search-input validate-error"}
-                    placeholder="Search item name here..."
+                    placeholder={placeholder}
                     title="Try 'barton' to see the result :) "
                     value={inputValue} onChange={handleChange} />
                 <button>Search</button>

@@ -9,11 +9,11 @@ function ProductDetail() {
     let { item } = useLocation();
     const pageTitle = useParams();
     const { data } = useContext(ProductContext)
-    console.log("item is :", item);
+    // console.log("item is :", item);
 
     if (!item) {
         item = data.filter((item) => item.title === pageTitle.title)[0]
-        console.log("new item is :", item);
+        // console.log("new item is :", item);
     }
 
 
