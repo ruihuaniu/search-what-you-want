@@ -31,7 +31,7 @@ function SearchBar(props) {
                 const result = await axios.get(url, {
                     "headers": {
                         "x-rapidapi-host": "numbersapi.p.rapidapi.com",
-                        "x-rapidapi-key": process.env.REACT_APP_NUMBER_API_KEY
+                        "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
                     }
                 })
                 // console.log("result on search bar", result);
