@@ -9,7 +9,6 @@ import axios from 'axios'
 
 function SearchBar(props) {
 
-
     //const [products, setProducts] = useContext(ProductContext)
     const { products, setProducts, category, setCategory, data } = useContext(ProductContext)
     const history = useHistory()
@@ -24,29 +23,51 @@ function SearchBar(props) {
     const [clickCount, setClickCount] = useState(null)
     const [warningInfo, setWarningInfo] = useState("")
     const [placeholder, setPlaceholder] = useState("Search item name here...")
+    const [inputTitle, setInputTitle] = useState("Try 'barton' to see the result :) ")
 
     useEffect(() => {
-        async function getData() {
+        async function getData(url) {
             try {
-                const result = await axios.get(`https://numbersapi.p.rapidapi.com/${Number(inputValue)}/trivia?fragment=true&notfound=floor&json=true`, {
+                const result = await axios.get(url, {
                     "headers": {
                         "x-rapidapi-host": "numbersapi.p.rapidapi.com",
-                        "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"
+                        "x-rapidapi-key": process.env.REACT_APP_NUMBER_API_KEY
                     }
                 })
                 // console.log("result on search bar", result);
-                setProducts(result.data.text)
 
-                if (!result.data.found) {  //check if the number doesn't exist
-                    setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is list below`)
+                switch (category) {
+                    case "lucky":
+                        setProducts(result.data.text);
+                        if (!result.data.found) {  //check if the number exist
+                            setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is list below`)
+                        }
+                        break;
+                    case "weather":
+                        setProducts("this is weather");
+                        break;
                 }
+
             } catch (err) {
                 console.log(err);
             }
         }
-        if (category === "lucky") {
-            getData()
+
+        let URL = ""
+        switch (category) {
+            case "lucky":
+                URL = `https://numbersapi.p.rapidapi.com/${Number(inputValue)}/trivia?fragment=true&notfound=floor&json=true`;
+                getData(URL);
+                break;
+            case "weather":
+                URL = ``
+                getData(URL);
+                break
         }
+
+
+
+
     }, [clickCount]) //dependency to invoke useEffect
 
 
@@ -98,9 +119,11 @@ function SearchBar(props) {
         switch (e.target.value) {
             case "product":
                 setPlaceholder("Search item name here...");
+                setInputTitle("Try 'barton' to see the result :) ")
                 break;
             case "lucky":
                 setPlaceholder("Search lucky number here...");
+                setInputTitle("Type a number to see the result :) ")
                 break;
             default:
                 setPlaceholder("Search item name here...");
@@ -148,7 +171,7 @@ function SearchBar(props) {
 
                 <input type="text" className={isValid ? "search-input " : "search-input validate-error"}
                     placeholder={placeholder}
-                    title="Try 'barton' to see the result :) "
+                    title={inputTitle}
                     value={inputValue} onChange={handleChange} />
                 <button>Search</button>
             </form>

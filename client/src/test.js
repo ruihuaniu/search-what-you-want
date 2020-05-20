@@ -1,7 +1,9 @@
-let arr = [1, 2, 3]
+const a = [1, 2, 3];
+const doubled = a.forEach((num, index) => {
+    return num * 2
+});
 
-const result = []
-result.push([...arr])
-arr.length = 0
+// doubled = undefined
 
-console.log(result);
+console.log(a);
+
