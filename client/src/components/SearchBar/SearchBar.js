@@ -40,7 +40,7 @@ function SearchBar(props) {
                     case "lucky":
                         setProducts(result.data.text);
                         if (!result.data.found) {  //check if the number exist
-                            setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is list below`)
+                            setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
                         }
                         break;
                     case "weather":
@@ -64,9 +64,6 @@ function SearchBar(props) {
                 getData(URL);
                 break
         }
-
-
-
 
     }, [clickCount]) //dependency to invoke useEffect
 
@@ -106,8 +103,6 @@ function SearchBar(props) {
 
                 setProducts("Lucky! wait...")   // setProducts to welcome during the axios fetch process 
                 break;
-
-
 
         }
         e.preventDefault();
