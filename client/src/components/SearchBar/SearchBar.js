@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 import './SearchBar.scss'
+import { ProductContext } from '../ProductContext'
 import { useHistory, Link, useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
 import bartonData from '../../data/barton-data'
@@ -9,7 +10,7 @@ import axios from 'axios'
 function SearchBar(props) {
 
     //const [products, setProducts] = useContext(ProductContext)
-    // const { products, setProducts, category, setCategory, data } = useContext(ProductContext)
+    const { products, setProducts, category, setCategory, data } = useContext(ProductContext)
     const history = useHistory()
     // console.log("history pathname", history);
     const location = useLocation()   //not sure why history.location isn't working well in production, only works locally

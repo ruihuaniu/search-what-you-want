@@ -17,6 +17,7 @@
     text-align: center;
     text-align-last: center; // make the option align center on chrome
     background-color: #fff;
+    outline: none;
     // appearance: none;
 
     option {
@@ -46,6 +47,7 @@
     height: 45px;
     border: 1px solid transparent;
     border-radius: 0 20px 20px 0;
+    outline: none;
   }
 
   button:hover {
@@ -59,11 +61,13 @@
 
     .search-category {
       width: 22%;
+      outline: none;
     }
 
     button {
       width: 18%;
       padding: 5px 8px;
+      outline: none;
     }
   }
 
