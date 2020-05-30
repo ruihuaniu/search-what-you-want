@@ -39,10 +39,15 @@ function SearchBar(props) {
                 const result = await axios.get("https://type.fit/api/quotes")
                 //console.log("result on search bar", result1);
                 if (inputValue < result.data.length) {
-                    setProducts(result.data[inputValue]["text"])
+                    setTimeout(() => {
+                        setProducts(result.data[inputValue]["text"])
+                    }, 500)
+
                 } else {
-                    setWarningInfo(" :( Our bad, the number is not found")
-                    setProducts(result.data[0]["text"])
+                    setTimeout(() => {
+                        setWarningInfo(" :( Our bad, the number is not found")
+                        setProducts(result.data[0]["text"])
+                    }, 500)
                 }
 
 
