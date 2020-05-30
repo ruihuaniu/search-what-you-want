@@ -28,28 +28,42 @@ function SearchBar(props) {
     useEffect(() => {
         async function getData(url) {
             try {
-                const result = await axios.get(url, {
-                    "headers": {
-                        "x-rapidapi-host": "numbersapi.p.rapidapi.com",
-                        "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
-                    }
-                })
-                // console.log("result on search bar", result);
+                // const result = await axios.get(url, {
+                //     "headers": {
+                //         "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                //         "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
+                //     }
+                // })
 
-                switch (category) {
-                    case "lucky":
-                        setProducts(result.data.text);
-                        if (!result.data.found) {  //check if the number exist
-                            setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
-                        }
-                        break;
-                    case "weather":
-                        setProducts("this is weather");
-                        break;
+                // Backup api below as the numberAPI above not working
+                const result = await axios.get("https://type.fit/api/quotes")
+                //console.log("result on search bar", result1);
+                if (inputValue < result.data.length) {
+                    setProducts(result.data[inputValue]["text"])
+                } else {
+                    setWarningInfo(" :( Our bad, the number is not found")
+                    setProducts(result.data[0]["text"])
                 }
+
+
+
+                // switch (category) {
+                //     case "lucky":
+                //         setProducts(result.data.text);
+                //         if (!result.data.found) {  //check if the number exist
+                //             setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
+                //         }
+                //         break;
+                //     case "weather":
+                //         setProducts("this is weather");
+                //         break;
+                // }
 
             } catch (err) {
                 console.log(err);
+                // Use backup api to fetch data
+
+
             }
         }
 
