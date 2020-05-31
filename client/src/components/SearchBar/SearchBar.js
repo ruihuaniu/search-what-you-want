@@ -6,6 +6,7 @@ import { useHistory, Link, useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
 import bartonData from '../../data/barton-data'
 import axios from 'axios'
+import { pathName } from '../../utilities/RoutePathName'
 
 function SearchBar(props) {
 
@@ -91,10 +92,10 @@ function SearchBar(props) {
     const handleSubmit = (e) => {
         setClickCount((prev) => prev + 1)
         // console.log("history is: ", history);
-        if (location.pathname !== "/result") {   //navigation to result page to show the search results
+        if (location.pathname !== pathName.result) {   //navigation to result page to show the search results
 
             //history.goBack()
-            history.push('/result')
+            history.push(pathName.result)
         }
 
 
@@ -172,7 +173,7 @@ function SearchBar(props) {
     }
 
     return (
-        <div className={location.pathname === "/" ? "searchBar-container homepage-searchBar" : "searchBar-container"}>
+        <div className={location.pathname === pathName.home ? "searchBar-container homepage-searchBar" : "searchBar-container"}>
             {/* <Header /> */}
             <form className="searchBar-form" onSubmit={handleSubmit}>
                 <select type="text" className="search-category"

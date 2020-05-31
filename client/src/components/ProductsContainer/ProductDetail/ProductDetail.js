@@ -9,11 +9,11 @@ function ProductDetail() {
     let { item } = useLocation();
     const pageTitle = useParams();
     const { data } = useContext(ProductContext)
-    // console.log("item is :", item);
+    //console.log("item is :", item);
 
     if (!item) {
-        item = data.filter((item) => item.title === pageTitle.title)[0]
-        // console.log("new item is :", item);
+        item = data.filter((element) => element.title.toLowerCase() === pageTitle.title)[0]   //[0] means only get the first item if more than one item was filtered as the result
+        //console.log("new item is :", item);
     }
 
 

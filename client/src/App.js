@@ -11,6 +11,7 @@ import ProductsContainer from './components/ProductsContainer/ProductsContainer'
 import ProductDetail from './components/ProductsContainer/ProductDetail/ProductDetail';
 import Result from './pages/Result/Result';
 import Home from './pages/Home/Home';
+import { pathName } from './utilities/RoutePathName';
 
 function App() {
 
@@ -30,19 +31,7 @@ function App() {
   const [products, setProducts] = useState(data)
   const [category, setCategory] = useState("product")
 
-  useEffect(() => {
-    // async function getData() {
-    //   try {
-    //     const result = await axios.get("http://numbersapi.com/36");
-    //     console.log("axios result is ", result.data);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
 
-    // getData();
-
-  }, [])
 
   return (
     <Router>
@@ -53,10 +42,10 @@ function App() {
         <ProductContext.Provider value={{ products, setProducts, category, setCategory, data }} >
           <SearchBar />
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/result" exact component={Result} />
-            <Route path="/result/:title" component={ProductDetail} />>
-                 </Switch>
+            <Route path={pathName.home} exact component={Home} />
+            <Route path={pathName.result} exact component={Result} />
+            <Route path={pathName.detail} component={ProductDetail} />>
+          </Switch>
 
           {/* <MainRouter /> */}
           <Footer />
