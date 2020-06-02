@@ -5,6 +5,7 @@ import { ProductContext } from '../ProductContext'
 import { useHistory, Link, useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
 import bartonData from '../../data/barton-data'
+import quotes from '../../data/quotes.json'
 import axios from 'axios'
 import { pathName } from '../../utilities/RoutePathName'
 
@@ -29,41 +30,45 @@ function SearchBar(props) {
     useEffect(() => {
         async function getData(url) {
             try {
-                const result = await axios.get(url, {
-                    "headers": {
-                        "x-rapidapi-host": "numbersapi.p.rapidapi.com",
-                        "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
-                    }
-                })
+                // const result = await axios.get(url, {
+                //     "headers": {
+                //         "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                //         "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
+                //     }
+                // })
 
-                // Backup api below as the numberAPI above not working
-                // const result = await axios.get("https://type.fit/api/quotes")
-                // //console.log("result on search bar", result1);
-                // if (inputValue < result.data.length) {
-                //     setTimeout(() => {
-                //         setProducts(result.data[inputValue]["text"])
-                //     }, 500)
 
-                // } else {
-                //     setTimeout(() => {
-                //         setWarningInfo(" :( Our bad, the number is not found")
-                //         setProducts(result.data[0]["text"])
-                //     }, 500)
+                // switch (category) {
+                //     case "lucky":
+                //         setProducts(result.data.text);
+                //         if (!result.data.found) {  //check if the number exist
+                //             setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
+                //         }
+                //         break;
+                //     case "weather":
+                //         setProducts("this is weather");
+                //         break;
                 // }
 
 
+                // Backup1:  a new quote api below as the numberAPI above is not working
+                // const result = await axios.get("https://type.fit/api/quotes");
+                // const quotes = result.data;
 
-                switch (category) {
-                    case "lucky":
-                        setProducts(result.data.text);
-                        if (!result.data.found) {  //check if the number exist
-                            setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
-                        }
-                        break;
-                    case "weather":
-                        setProducts("this is weather");
-                        break;
+                //Backup2: import json data of quotes if backup1 is not working
+
+                if (inputValue < quotes.length) {
+                    setTimeout(() => {
+                        setProducts(quotes[inputValue]["text"])
+                    }, 500)
+
+                } else {
+                    setTimeout(() => {
+                        setWarningInfo(" :( Our bad, the number is not found")
+                        setProducts(quotes[0]["text"])
+                    }, 500)
                 }
+
 
             } catch (err) {
                 console.log(err);
