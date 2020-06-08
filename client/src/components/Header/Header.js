@@ -6,6 +6,8 @@ import { pathName } from '../../utilities/RoutePathName'
 
 function Header() {
     const location = useLocation()
+    //console.log("location ", location);
+
 
     return (
         <div className={location.pathname === pathName.home ? "header-container homepage-header" : "header-container"}>

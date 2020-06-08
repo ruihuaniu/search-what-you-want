@@ -12,6 +12,7 @@ import ProductDetail from './components/ProductsContainer/ProductDetail/ProductD
 import Result from './pages/Result/Result';
 import Home from './pages/Home/Home';
 import { pathName } from './utilities/RoutePathName';
+import NotFoundPage from './components/NotFound Page/NotFoundPage';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
             <Route path={pathName.home} exact component={Home} />
             <Route path={pathName.result} exact component={Result} />
             <Route path={pathName.detail} component={ProductDetail} />>
+            <Route component={NotFoundPage} />>
           </Switch>
 
           {/* <MainRouter /> */}

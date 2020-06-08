@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react'
-import classNames from 'classnames'
 import './SearchBar.scss'
 import { ProductContext } from '../ProductContext'
 import { useHistory, Link, useLocation } from 'react-router-dom'
@@ -30,25 +29,27 @@ function SearchBar(props) {
     useEffect(() => {
         async function getData(url) {
             try {
-                // const result = await axios.get(url, {
-                //     "headers": {
-                //         "x-rapidapi-host": "numbersapi.p.rapidapi.com",
-                //         "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
-                //     }
-                // })
+                const result = await axios.get(url, {
+                    "headers": {
+                        "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                        "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
+                    }
+                })
 
 
-                // switch (category) {
-                //     case "lucky":
-                //         setProducts(result.data.text);
-                //         if (!result.data.found) {  //check if the number exist
-                //             setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
-                //         }
-                //         break;
-                //     case "weather":
-                //         setProducts("this is weather");
-                //         break;
-                // }
+                switch (category) {
+                    case "lucky":
+                        //console.log("result is ", result);
+
+                        setProducts(result.data);
+                        if (!result.data) {  //check if the number exist
+                            setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
+                        }
+                        break;
+                    case "weather":
+                        setProducts("this is weather");
+                        break;
+                }
 
 
                 // Backup1:  a new quote api below as the numberAPI above is not working
@@ -57,17 +58,17 @@ function SearchBar(props) {
 
                 //Backup2: import json data of quotes if backup1 is not working
 
-                if (inputValue < quotes.length) {
-                    setTimeout(() => {
-                        setProducts(quotes[inputValue]["text"])
-                    }, 500)
+                // if (inputValue < quotes.length) {
+                //     setTimeout(() => {
+                //         setProducts(quotes[inputValue]["text"])
+                //     }, 500)
 
-                } else {
-                    setTimeout(() => {
-                        setWarningInfo(" :( Our bad, the number is not found")
-                        setProducts(quotes[0]["text"])
-                    }, 500)
-                }
+                // } else {
+                //     setTimeout(() => {
+                //         setWarningInfo(" :( Our bad, the number is not found")
+                //         setProducts(quotes[0]["text"])
+                //     }, 500)
+                // }
 
 
             } catch (err) {
