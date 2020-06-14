@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.scss'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import { pathName } from '../../utilities/RoutePathName'
 
@@ -15,8 +15,8 @@ function Header() {
             {/* <div><SearchBar /></div> */}
             {/* <div className="header-container-menu"> */}
             <ul className="menu-container">
-                <li><Link to={pathName.home} className="menu-item">Home</Link></li>
-                <li><Link to={pathName.result} className="menu-item">List</Link></li>
+                <li><NavLink to={pathName.home} exact activeClassName="selected-active" className="menu-item">Home</NavLink></li>
+                <li><NavLink to={pathName.result} activeClassName="selected-active" className="menu-item">List</NavLink></li>
             </ul>
             {/* </div> */}
         </div >

@@ -47,6 +47,12 @@
 
   .menu-item:hover {
     color: #82cdff;
+    //text-decoration: underline;
+  }
+
+  .selected-active {
+    color: #82cdff;
+    //background: rgb(34, 34, 34);
   }
 }
 

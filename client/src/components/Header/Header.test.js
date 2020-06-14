@@ -10,7 +10,7 @@ describe("Header component", () => {
     })
 
     it("should have logo-container class ", () => {
-        expect(wrapper.find("div").hasClass("logo-container")).toBeTruthy()
+        expect(wrapper.find("logo-container")).toBe(1)
     })
 
     it("should have menu-container class ", () => {
