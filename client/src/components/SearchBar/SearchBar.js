@@ -46,18 +46,30 @@ function SearchBar(props) {
                             }
                         })
                         setProducts(result.data.text);
+                        setWarningInfo("");
                         if (!result.data.found) {  //check if the number exist
                             setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
                         }
                         break;
                     case "joke":
-                        result = await axios.get(url)
+                        result = await axios.get(url, {
+                            "headers": {
+                                "x-rapidapi-host": "joke3.p.rapidapi.com",
+                                "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
+                            }
+                        })
+
+                        setProducts(result.data.content);
+
+                        // Another API for joke as a backup below
+
+                        //result = await axios.get(url)
                         //console.log("result is ", result);
-                        setProducts(result.data.value.joke);
-                        setWarningInfo("")
-                        if (result.data.type === "NoSuchQuoteException") {
-                            setWarningInfo(" :( Our bad, the joke was not found")
-                        }
+                        // setProducts(result.data.value.joke);
+                        // setWarningInfo("");
+                        // if (result.data.type === "NoSuchQuoteException") {
+                        //     setWarningInfo(" :( Our bad, the joke was not found")
+                        // }
                         break;
                 }
 
@@ -90,14 +102,15 @@ function SearchBar(props) {
         }
 
         let URL = ""
+        const queryValue = inputValue || Math.floor(Math.random() * 500) + 1
         switch (category) {
             case "lucky":
-                URL = `https://numbersapi.p.rapidapi.com/${Number(inputValue)}/trivia?fragment=true&notfound=floor&json=true`;
+                URL = `https://numbersapi.p.rapidapi.com/${Number(queryValue)}/trivia?fragment=true&notfound=floor&json=true`;
                 getData(URL);
                 break;
             case "joke":
-                const queryValue = inputValue || Math.floor(Math.random() * 500) + 1
-                URL = `https://api.icndb.com/jokes/${queryValue}`
+                //URL = `https://api.icndb.com/jokes/${Number(queryValue)}`
+                URL = "https://joke3.p.rapidapi.com/v1/joke"
                 getData(URL);
                 break
         }
