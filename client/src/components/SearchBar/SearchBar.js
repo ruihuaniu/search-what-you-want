@@ -29,25 +29,35 @@ function SearchBar(props) {
     useEffect(() => {
         async function getData(url) {
             try {
-                const result = await axios.get(url, {
-                    "headers": {
-                        "x-rapidapi-host": "numbersapi.p.rapidapi.com",
-                        "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
-                    }
-                })
+                // const result = await axios.get(url, {                  
+                //         "headers": {
+                //             // "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                //             //"x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
+                //         }  
+                // })
 
-
+                let result = ""
                 switch (category) {
                     case "lucky":
-                        //console.log("result is ", result);
-
-                        setProducts(result.data);
-                        if (!result.data) {  //check if the number exist
+                        result = await axios.get(url, {
+                            "headers": {
+                                "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                                "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
+                            }
+                        })
+                        setProducts(result.data.text);
+                        if (!result.data.found) {  //check if the number exist
                             setWarningInfo(` :( Our bad, the number is not found, a similar number ${result.data.number} is listed below`)
                         }
                         break;
-                    case "weather":
-                        setProducts("this is weather");
+                    case "joke":
+                        result = await axios.get(url)
+                        //console.log("result is ", result);
+                        setProducts(result.data.value.joke);
+                        setWarningInfo("")
+                        if (result.data.type === "NoSuchQuoteException") {
+                            setWarningInfo(" :( Our bad, the joke was not found")
+                        }
                         break;
                 }
 
@@ -85,8 +95,9 @@ function SearchBar(props) {
                 URL = `https://numbersapi.p.rapidapi.com/${Number(inputValue)}/trivia?fragment=true&notfound=floor&json=true`;
                 getData(URL);
                 break;
-            case "weather":
-                URL = ``
+            case "joke":
+                const queryValue = inputValue || Math.floor(Math.random() * 500) + 1
+                URL = `https://api.icndb.com/jokes/${queryValue}`
                 getData(URL);
                 break
         }
@@ -129,6 +140,10 @@ function SearchBar(props) {
 
                 setProducts("Lucky! wait...")   // setProducts to welcome during the axios fetch process 
                 break;
+            case "joke":
+
+                setProducts("A new joke, wait...")   // setProducts to welcome during the axios fetch process 
+                break;
 
         }
         e.preventDefault();
@@ -146,6 +161,10 @@ function SearchBar(props) {
                 setPlaceholder("Search lucky number here...");
                 setInputTitle("Type a number to see the result :) ")
                 break;
+            case "joke":
+                setPlaceholder("Get a joke here...");
+                setInputTitle("Type a number to get a joke :) ")
+                break;
             default:
                 setPlaceholder("Search item name here...");
         }
@@ -161,7 +180,7 @@ function SearchBar(props) {
 
         //const validateExpression = RegExp("[abc]{30}")
         const processedInputValue = e.target.value.split(" ").join("")
-        if (category === "lucky" && !Number.isInteger(Number(e.target.value))) {
+        if ((category === "lucky" || category === "joke") && !Number.isInteger(Number(e.target.value))) {
             setIsValid(false)
             setWarningInfo("Warning: your input should be an integer")
         } else {
@@ -188,6 +207,7 @@ function SearchBar(props) {
                 >
                     <option value="product">Product</option>
                     <option value="lucky">Lucky Number</option>
+                    <option value="joke">Joke</option>
                 </select>
 
                 <input type="text" className={isValid ? "search-input " : "search-input validate-error"}
