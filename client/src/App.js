@@ -11,7 +11,7 @@ import ProductsContainer from './components/ProductsContainer/ProductsContainer'
 import ProductDetail from './components/ProductsContainer/ProductDetail/ProductDetail';
 import Result from './pages/Result/Result';
 import Home from './pages/Home/Home';
-import { pathName } from './utilities/RoutePathName';
+import { pathName } from './utils/RoutePathName';
 import NotFoundPage from './components/NotFound Page/NotFoundPage';
 
 function App() {

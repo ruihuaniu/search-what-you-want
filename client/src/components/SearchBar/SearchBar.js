@@ -6,7 +6,7 @@ import Header from '../Header/Header'
 import bartonData from '../../data/barton-data'
 import quotes from '../../data/quotes.json'
 import axios from 'axios'
-import { pathName } from '../../utilities/RoutePathName'
+import { pathName } from '../../utils/RoutePathName'
 
 function SearchBar(props) {
 
@@ -19,7 +19,6 @@ function SearchBar(props) {
 
 
     const [inputValue, setInputValue] = useState("")
-
     const [isValid, setIsValid] = useState(true)
     const [clickCount, setClickCount] = useState(null)
     const [warningInfo, setWarningInfo] = useState("")
@@ -45,6 +44,7 @@ function SearchBar(props) {
                                 "x-rapidapi-key": "ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b"  //process.env.REACT_APP_NUMBER_API_KEY
                             }
                         })
+
                         setProducts(result.data.text);
                         setWarningInfo("");
                         if (!result.data.found) {  //check if the number exist
@@ -61,8 +61,7 @@ function SearchBar(props) {
 
                         setProducts(result.data.content);
 
-                        // Another API for joke as a backup below
-
+                        // Method 2: Another API for joke as a backup below
                         //result = await axios.get(url)
                         //console.log("result is ", result);
                         // setProducts(result.data.value.joke);
@@ -70,7 +69,20 @@ function SearchBar(props) {
                         // if (result.data.type === "NoSuchQuoteException") {
                         //     setWarningInfo(" :( Our bad, the joke was not found")
                         // }
+
+
+                        //console.log("input value is", typeof (inputValue));
+
+
+                        // result = await axios.post("/api/v1/", {
+                        //     "password": inputValue
+                        // })
+
+                        // console.log("post result is ", result.data);
+
+
                         break;
+
                 }
 
 
@@ -96,19 +108,18 @@ function SearchBar(props) {
             } catch (err) {
                 console.log(err);
                 // Use backup api to fetch data
-
-
             }
         }
 
         let URL = ""
-        const queryValue = inputValue || Math.floor(Math.random() * 500) + 1
+
         switch (category) {
             case "lucky":
-                URL = `https://numbersapi.p.rapidapi.com/${Number(queryValue)}/trivia?fragment=true&notfound=floor&json=true`;
+                URL = `https://numbersapi.p.rapidapi.com/${Number(inputValue)}/trivia?fragment=true&notfound=floor&json=true`;
                 getData(URL);
                 break;
             case "joke":
+                const queryValue = inputValue || Math.floor(Math.random() * 500) + 1
                 //URL = `https://api.icndb.com/jokes/${Number(queryValue)}`
                 URL = "https://joke3.p.rapidapi.com/v1/joke"
                 getData(URL);

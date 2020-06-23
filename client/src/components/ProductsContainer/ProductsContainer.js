@@ -5,7 +5,7 @@ import './ProductsContainer.scss'
 import SearchBar from '../SearchBar/SearchBar'
 import ProductDetail from './ProductDetail/ProductDetail'
 import { ProductContext } from '../ProductContext'
-import { pathName } from '../../utilities/RoutePathName'
+import { pathName } from '../../utils/RoutePathName'
 
 
 function ProductsContainer() {

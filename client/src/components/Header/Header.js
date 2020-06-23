@@ -2,7 +2,7 @@ import React from 'react'
 import './Header.scss'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
-import { pathName } from '../../utilities/RoutePathName'
+import { pathName } from '../../utils/RoutePathName'
 
 function Header() {
     const location = useLocation()
