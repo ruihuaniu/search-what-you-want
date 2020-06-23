@@ -230,7 +230,7 @@ function SearchBar(props) {
                     onChange={handleCategoryChange}
                 >
                     <option value="product">Product</option>
-                    <option value="lucky">Lucky Number</option>
+                    <option value="lucky">Number</option>
                     <option value="joke">Joke</option>
                 </select>
 
