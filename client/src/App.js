@@ -45,8 +45,8 @@ function App() {
           <Switch>
             <Route path={pathName.home} exact component={Home} />
             <Route path={pathName.result} exact component={Result} />
-            <Route path={pathName.detail} component={ProductDetail} />>
-            <Route component={NotFoundPage} />>
+            <Route path={pathName.detail} component={ProductDetail} />
+            <Route component={NotFoundPage} />
           </Switch>
 
           {/* <MainRouter /> */}
