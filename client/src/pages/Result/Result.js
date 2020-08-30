@@ -16,7 +16,7 @@ function Result() {
   return (
     <div className="container">
       <div className="text">
-        {products.punchline ? `${products.setup} ${products.punchline}` : products}
+        {products.message ? products.message : products.joke ? products.joke : products.setup ? `${products.setup} ${products.delivery}` : products}
       </div>
     </div>
   );

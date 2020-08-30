@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable default-case */
 /* eslint-disable no-case-declarations */
 import React, { useState, useContext, useEffect } from 'react';
@@ -66,9 +67,14 @@ function SearchBar(props) {
           case 'joke':
             result = await axios.get(url, {
               headers: {
-                'x-rapidapi-host': 'dad-jokes.p.rapidapi.com',
+                // 'x-rapidapi-host': 'dad-jokes.p.rapidapi.com',
+                'x-rapidapi-host': 'jokeapi-v2.p.rapidapi.com',
                 'x-rapidapi-key': 'ceb11507cbmsh666fb29a389ccc2p12fc7cjsn863d8ea29b5b', // process.env.REACT_APP_NUMBER_API_KEY
               },
+              // qs: {
+              //   contains: encodeURIComponent('c#'),
+              //   idRange: Number(inputValue) || '',
+              // },
             });
             // console.log(result);
             setProducts(result.data);
@@ -130,10 +136,11 @@ function SearchBar(props) {
         getData(URL);
         break;
       case 'joke':
-        const queryValue = inputValue || Math.floor(Math.random() * 500) + 1;
+        // const queryValue = inputValue || Math.floor(Math.random() * 500) + 1;
         // URL = `https://api.icndb.com/jokes/${Number(queryValue)}`
-        // URL = 'https://joke3.p.rapidapi.com/v1/joke';
-        URL = 'https://dad-jokes.p.rapidapi.com/random/jokes';
+        // URL = 'https://joke3.p.rapidapi.com/v1/joke';    // 2020-8-30 not working
+        // URL = 'https://dad-jokes.p.rapidapi.com/random/jokes';  // 2020-8-30 still working but not enough features
+        URL = `https://jokeapi-v2.p.rapidapi.com/joke/Any?contains=${encodeURIComponent(Number(inputValue) ? '' : inputValue)}&idRange=${Number(inputValue) || ''}`;
         getData(URL);
         break;
     }
@@ -213,7 +220,8 @@ function SearchBar(props) {
 
     // const validateExpression = RegExp("[abc]{30}")
     const processedInputValue = e.target.value.split(' ').join('');
-    if ((category === 'lucky' || category === 'joke') && !Number.isInteger(Number(e.target.value))) {
+    // if ((category === 'lucky' || category === 'joke') && !Number.isInteger(Number(e.target.value))) {  // 2020-08-30 now joke input could be number or string
+    if ((category === 'lucky') && !Number.isInteger(Number(e.target.value))) {
       setIsValid(false);
       setWarningInfo('Warning: your input should be an integer');
     } else if (processedInputValue.length > 10) {
