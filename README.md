@@ -16,4 +16,4 @@ A React project with interesting searching features
 
 Mobile version created with React Native is available, check it out !
 
-[Mobile version](https://github.com/BartonNIU/search-app)
+[Mobile version](https://github.com/ruihuaniu/search-app)

@@ -17,7 +17,7 @@ describe("Footer component", () => {
     })
 
     it("should has the content", () => {
-        expect(wrapper.contains(<p>Copyright@ 2020 Barton All Rights Reserved</p>)).toBeTruthy();
+        expect(wrapper.contains(<p>Copyright@ 2020 Ruihua All Rights Reserved</p>)).toBeTruthy();
     })
 
 })

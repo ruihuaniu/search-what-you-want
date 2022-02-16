@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "title": "Barton's product - Serene Project",
+        "title": "Ruihua's product - Serene Project",
         "type": "commercial",
         "link": "http://serene.tk/listing_act.php",
         "image": "/images/serene.png",
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "title": "Barton's product - Timber Floor Centre Project",
+        "title": "Ruihua's product - Timber Floor Centre Project",
         "type": "commercial ecommerce",
         "link": "https://www.timberfloorcentre.com.au",
         "image": "/images/timber_floor_center.png",
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "title": "Barton's product - Admin Management Tool",
+        "title": "Ruihua's product - Admin Management Tool",
         "type": "commercial personal",
         "link": "https://admin-management.now.sh",
         "image": "/images/admin_management.png",
@@ -25,7 +25,7 @@
     },
     {
         "id": 4,
-        "title": "Barton's product - TFC Commercial Project",
+        "title": "Ruihua's product - TFC Commercial Project",
         "type": "commercial ecommerce",
         "link": "https://www.tfccommercial.com.au",
         "image": "/images/tfc_commercial.png",
@@ -33,7 +33,7 @@
     },
     {
         "id": 5,
-        "title": "Barton's product - Barton web Project",
+        "title": "Ruihua's product - Ruihua web Project",
         "type": "personal",
         "link": "https://bartonweb.web.app/",
         "image": "/images/barton_web.png",
@@ -41,7 +41,7 @@
     },
     {
         "id": 6,
-        "title": "Barton's product - Searching what you want",
+        "title": "Ruihua's product - Searching what you want",
         "type": "personal",
         "link": "https://bartonweb.web.app/",
         "image": "/images/interesting_search.png",

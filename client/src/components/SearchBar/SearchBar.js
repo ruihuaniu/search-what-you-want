@@ -27,7 +27,7 @@ function SearchBar(props) {
   const [clickCount, setClickCount] = useState(null);
   const [warningInfo, setWarningInfo] = useState('');
   const [placeholder, setPlaceholder] = useState('Search item name here...');
-  const [inputTitle, setInputTitle] = useState("Try 'barton' to see the result :) ");
+  const [inputTitle, setInputTitle] = useState("Try 'ray' to see the result :) ");
 
   useEffect(() => {
     const config = {
@@ -167,7 +167,7 @@ function SearchBar(props) {
             catalog_number: 1, title: 'You got it, Congratulations', image: '/images/home-data.jpg', category: 'special', description: 'Product details page', price: 'invaluable', unit: '',
           });
         }
-        if (inputFormatted.includes('barton') || inputFormatted.includes('project')) {
+        if (inputFormatted.includes('ray') || inputFormatted.includes('project')) {
           result.push(...bartonData);
         }
         setProducts(result);
@@ -196,7 +196,7 @@ function SearchBar(props) {
     switch (e.target.value) {
       case 'product':
         setPlaceholder('Search item name here...');
-        setInputTitle("Try 'barton' to see the result :) ");
+        setInputTitle("Try 'ray' to see the result :) ");
         break;
       case 'lucky':
         setPlaceholder('Search lucky number here...');
